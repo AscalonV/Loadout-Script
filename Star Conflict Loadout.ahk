@@ -1,9 +1,10 @@
-v1.5.0
+v1.5.1
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance Force
 #InstallKeybdHook
 #NoTrayIcon
+#MaxHotkeysPerInterval 1000
 CoordMode, Mouse, Screen
 SendMode Input
 SetMouseDelay, 0
@@ -1947,6 +1948,7 @@ Gui, 12: Show, x287.5 y273.75 h170 w300, Info
 Ship_Added := 1
 Hotkey, WheelUp, Off
 Hotkey, WheelDown, Off
+Gosub, RemoveToolTip
 }
 return
 
@@ -1970,6 +1972,7 @@ return
 Exit4:
 Hotkey, WheelUp, Off
 Hotkey, WheelDown, Off
+Gosub, RemoveToolTip
 goto, Show_Ship_Stats_Gui
 return
 
@@ -2093,6 +2096,7 @@ Gui, 12: Show, x287.5 y273.75 h170 w300, Info
 
 Hotkey, WheelUp, Off
 Hotkey, WheelDown, Off
+Gosub, RemoveToolTip
 return
 
 Settings_saved_confirm:
@@ -2104,6 +2108,7 @@ return
 Exit5:
 Hotkey, WheelUp, Off
 Hotkey, WheelDown, Off
+Gosub, RemoveToolTip
 goto, Show_Ship_Stats_Gui
 return
 
@@ -3571,14 +3576,35 @@ return
 
 
 ~WheelUp::
-~WheelDown::
     MouseWheelCounter++
-    Tooltip, %MouseWheelCounter%
-    SetTimer, RemoveToolTip, -5000
-	
+	Goto, MouseWheelToolTip
+return
+
+~WheelDown::
+    MouseWheelCounter--
+	Goto, MouseWheelToolTip
+return
+
+MouseWheelToolTip:
+	If MouseWheelCounter >= 1
+	{
+		MouseWheelCounterToolTip := MouseWheelCounter
+		Tooltip, Up: %MouseWheelCounterToolTip%
+	}
+	If MouseWheelCounter = 0
+	{
+		MouseWheelCounterToolTip := MouseWheelCounter
+		Tooltip, %MouseWheelCounterToolTip%
+	}
+	If MouseWheelCounter <= -1
+	{
+		MouseWheelCounterToolTip := -MouseWheelCounter
+		Tooltip, Down: %MouseWheelCounterToolTip%
+	}
 return
 
 RemoveToolTip:
+~MButton::
 ToolTip
 MouseWheelCounter = 0
 return
