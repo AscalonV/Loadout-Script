@@ -1,9 +1,9 @@
-v1.5.3
+v1.5.4
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance Force
 #InstallKeybdHook
-#NoTrayIcon
+;#NoTrayIcon
 #MaxHotkeysPerInterval 1000
 CoordMode, Mouse, Screen
 SendMode Input
@@ -122,8 +122,8 @@ Gui, 1: Font, cWhite s12, Arial
 Gui, 1: Add, Text, x0 y10 w600 center, -------------------- Select Ships --------------------
 
 
-Gui, 1: Add, Text, x130 y40 w150 h30, Ship
-Gui, 1: Add, Text, x265 y40 w150 h30, Build
+Gui, 1: Add, Text, x150 y40 w150 h30, Ship
+Gui, 1: Add, Text, x270 y40 w150 h30, Loadout
 
 
 
@@ -982,6 +982,8 @@ IniRead,implant_color,%A_ScriptDir%\Coordinates.ini,Implant,implant_color
 
 Click, %ClickX% %ClickY%
 
+
+SetTimer, Break_Impant_Loop, -3000
 PixelSearch, Implant_color_check_x, Implant_color_check_y, %ClickX%, %ClickY%, %ClickX%, %ClickY%, %implant_color%, 4, Fast RGB
 while !Implant_color_check_x
 {
@@ -989,6 +991,7 @@ Sleep, 100
 PixelSearch, Implant_color_check_x, Implant_color_check_y, %ClickX%, %ClickY%, %ClickX%, %ClickY%, %implant_color%, 4, Fast RGB
 }
 Sleep, 200
+SetTimer, Break_Impant_Loop, Off
 }
 return
 
@@ -3671,6 +3674,13 @@ RemoveToolTip:
 ~MButton::
 ToolTip
 MouseWheelCounter = 0
+return
+
+
+Break_Impant_Loop:
+BlockInput, MouseMoveOff
+Msgbox, Color of implant button not found. Closing script.
+ExitApp
 return
 
 
