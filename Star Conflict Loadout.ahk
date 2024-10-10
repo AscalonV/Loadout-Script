@@ -1,8 +1,9 @@
-v1.1.0
+v1.2.0
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to assist with detecting common errors.#SingleInstance Force
+SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+#SingleInstance Force
 #InstallKeybdHook
-;#NoTrayIcon
+#NoTrayIcon
 CoordMode, Mouse, Screen
 SendMode Input
 SetMouseDelay, 0
@@ -92,14 +93,8 @@ IniRead, Coordinates_Check_Crew_D, %A_ScriptDir%\Coordinates.ini, Crew_D, x
 IniRead, Coordinates_Check_Crew1_1, %A_ScriptDir%\Coordinates.ini, Crew1-1, x
 IniRead, Coordinates_Check_Crew15_3, %A_ScriptDir%\Coordinates.ini, Crew15-3, x
 IniRead, Coordinates_Check_Implant, %A_ScriptDir%\Coordinates.ini, Implant, x
-
-
-If (Coordinates_Check_Empire = "ERROR") or (Coordinates_Check_Federation = "ERROR") or (Coordinates_Check_Jericho = "ERROR") or (Coordinates_Check_Ellydium = "ERROR") or (Coordinates_Check_Unique = "ERROR") or (Coordinates_Check_Slot1 = "ERROR") or (Coordinates_Check_Slot2 = "ERROR") or (Coordinates_Check_Slot3 = "ERROR") or (Coordinates_Check_Slot4 = "ERROR") or (Coordinates_Check_Preset1 = "ERROR") or (Coordinates_Check_Preset2 = "ERROR") or (Coordinates_Check_Preset3 = "ERROR") or (Coordinates_Check_Preset4 = "ERROR") or (Coordinates_Check_PresetL = "ERROR") or (Coordinates_Check_Yes = "ERROR") or (Coordinates_Check_Scroll = "ERROR") or (Coordinates_Check_Back = "ERROR") or (Coordinates_Check_Crew_A = "ERROR") or (Coordinates_Check_Crew_B = "ERROR") or (Coordinates_Check_Crew_C = "ERROR") or (Coordinates_Check_Crew_D = "ERROR") or (Coordinates_Check_Crew1_1 = "ERROR") or (Coordinates_Check_Crew15_3 = "ERROR") or (Coordinates_Check_Implant = "ERROR")
-{
-msgbox, Please add the missing coordinates
-Gui, 8: destroy
-goto, Setup_GUI
-}
+IniRead, Coordinates_Check_Unequip_1_Y, %A_ScriptDir%\Coordinates.ini, Unequip_1, y
+IniRead, Coordinates_Check_Unequip_2_Y, %A_ScriptDir%\Coordinates.ini, Unequip_2, y
 
 
 Multiple := 0
@@ -155,11 +150,13 @@ Gui, 1: Add, Button, gButton_Only_Ship4 x380 y211 w63.33 h35, Only`nShip
 Gui, 1: Add, Button, gButton_Only_Crew4 x448.33 y211 w63.33 h35, Only`nCrew
 Gui, 1: Add, Button, gButton_Ship_Crew4 x516.66 y211 w63.33 h35, Ship+`nCrew
 
+Gui, 1: Add, checkbox, vUnequip_Ships_checked x20 y265 h30, Unequip Modules
 
 
 Gui, 1: Font, cWhite s12, Arial
-Gui, 1: Add, DDL, vLoaded_Preset gLoad_Preset x105 y270 w130 sort choose1, %Preferences%
-Gui, 1: Add, Button, gLoad_Preset x240 y270 w130 h25, Load Preset
+Gui, 1: Add, DDL, vLoaded_Preset gLoad_Preset x105 y305 w130 sort choose1, %Preferences%
+Gui, 1: Add, Button, gLoad_Preset x240 y305 w130 h25, Load Preset
+
 
 
 Gui, 1: Add, Button, gButton_All_Ships x380 y260 w97.5 h35, Equip all Ships
@@ -186,6 +183,14 @@ GuiControl, 1: choose, Ship2, None
 GuiControl, 1: choose, Ship3, None
 GuiControl, 1: choose, Ship4, None
 gosub, Last_Selected
+
+
+If (Coordinates_Check_Unequip_2_Y = "ERROR") or (Coordinates_Check_Unequip_1_Y = "ERROR") or (Coordinates_Check_Empire = "ERROR") or (Coordinates_Check_Federation = "ERROR") or (Coordinates_Check_Jericho = "ERROR") or (Coordinates_Check_Ellydium = "ERROR") or (Coordinates_Check_Unique = "ERROR") or (Coordinates_Check_Slot1 = "ERROR") or (Coordinates_Check_Slot2 = "ERROR") or (Coordinates_Check_Slot3 = "ERROR") or (Coordinates_Check_Slot4 = "ERROR") or (Coordinates_Check_Preset1 = "ERROR") or (Coordinates_Check_Preset2 = "ERROR") or (Coordinates_Check_Preset3 = "ERROR") or (Coordinates_Check_Preset4 = "ERROR") or (Coordinates_Check_PresetL = "ERROR") or (Coordinates_Check_Yes = "ERROR") or (Coordinates_Check_Scroll = "ERROR") or (Coordinates_Check_Back = "ERROR") or (Coordinates_Check_Crew_A = "ERROR") or (Coordinates_Check_Crew_B = "ERROR") or (Coordinates_Check_Crew_C = "ERROR") or (Coordinates_Check_Crew_D = "ERROR") or (Coordinates_Check_Crew1_1 = "ERROR") or (Coordinates_Check_Crew15_3 = "ERROR") or (Coordinates_Check_Implant = "ERROR")
+{
+msgbox, Please add the missing coordinates
+Gui, 8: destroy
+goto, Setup_GUI
+}
 return
 
 
@@ -795,6 +800,32 @@ IniRead,ClickY,%A_ScriptDir%\Coordinates.ini,%Slot_selected%,y
 Click, %ClickX% %ClickY%
 sleep, 200
 
+If Unequip_Ships_checked = 1
+{
+Click, %ClickX% %ClickY% right
+sleep, 200
+ClickX := ClickX+30
+IniRead,ClickY,%A_ScriptDir%\Coordinates.ini,Unequip_1,y
+Click, %ClickX% %ClickY%
+ClickX := ClickX-30
+Sleep, 200
+ControlSend, , {esc}, ahk_class game_main_window
+Sleep, 200
+ControlSend, , {t}, ahk_class game_main_window
+sleep, 200
+
+Click, %ClickX% %ClickY% right
+sleep, 200
+ClickX := ClickX+30
+IniRead,ClickY,%A_ScriptDir%\Coordinates.ini,Unequip_2,y
+Click, %ClickX% %ClickY%
+Sleep, 200
+ControlSend, , {esc}, ahk_class game_main_window
+Sleep, 200
+ControlSend, , {t}, ahk_class game_main_window
+sleep, 200
+}
+
 IniRead,Faction,%A_ScriptDir%\ShipList.ini,%Ship_loaded%|,Faction
 IniRead,ClickX,%A_ScriptDir%\Coordinates.ini,%Faction%,x
 IniRead,ClickY,%A_ScriptDir%\Coordinates.ini,%Faction%,y
@@ -915,7 +946,7 @@ IniRead,ClickX,%A_ScriptDir%\Coordinates.ini,Implant,x
 IniRead,ClickY,%A_ScriptDir%\Coordinates.ini,Implant,y
 
 Click, %ClickX% %ClickY%
-Sleep, 1000
+Sleep, 2000
 }
 return
 
@@ -3070,6 +3101,8 @@ IniRead, Slot3_X, %A_ScriptDir%\Coordinates.ini, Slot3, x
 IniRead, Slot3_Y, %A_ScriptDir%\Coordinates.ini, Slot3, y
 IniRead, Slot4_X, %A_ScriptDir%\Coordinates.ini, Slot4, x
 IniRead, Slot4_Y, %A_ScriptDir%\Coordinates.ini, Slot4, y
+IniRead, Unequip_1_Y, %A_ScriptDir%\Coordinates.ini, Unequip_1, y
+IniRead, Unequip_2_Y, %A_ScriptDir%\Coordinates.ini, Unequip_2, y
 
 IniRead, Preset1_X, %A_ScriptDir%\Coordinates.ini, Preset1, x
 IniRead, Preset1_Y, %A_ScriptDir%\Coordinates.ini, Preset1, y
@@ -3121,6 +3154,8 @@ Gui, 8: Add, Text, vText8 x30 y250 w200 h30, Ship Slot 1:
 Gui, 8: Add, Text, vText9 x30 y280 w200 h30, Ship Slot 2:
 Gui, 8: Add, Text, vText10 x30 y310 w200 h30, Ship Slot 3:
 Gui, 8: Add, Text, vText11 x30 y340 w200 h30, Ship Slot 4:
+Gui, 8: Add, Text, vText25 x30 y370 w200 h30, Unequip 1:
+Gui, 8: Add, Text, vText26 x30 y400 w200 h30, Unequip 2:
 
 Gui, 8: Add, Text, vText12 x330 y40 w200 h30, Preset 1:
 Gui, 8: Add, Text, vText13 x330 y70 w200 h30, Preset 2:
@@ -3149,6 +3184,8 @@ Gui, 8: Add, Button, gEdit_Text8 x240 y248 w50 h20, Edit
 Gui, 8: Add, Button, gEdit_Text9 x240 y278 w50 h20, Edit
 Gui, 8: Add, Button, gEdit_Text10 x240 y308 w50 h20, Edit
 Gui, 8: Add, Button, gEdit_Text11 x240 y338 w50 h20, Edit
+Gui, 8: Add, Button, gEdit_Text25 x240 y368 w50 h20, Edit
+Gui, 8: Add, Button, gEdit_Text26 x240 y398 w50 h20, Edit
 
 Gui, 8: Add, Button, gEdit_Text12 x540 y38 w50 h20, Edit
 Gui, 8: Add, Button, gEdit_Text13 x540 y68 w50 h20, Edit
@@ -3290,6 +3327,16 @@ GuiControl, 8: text, Text23, Crew 15-3:   x%Crew15_3_X% y%Crew15_3_Y%
 If (CrewImplant_X != "ERROR")
 {
 GuiControl, 8: text, Text24, Implant:   x%CrewImplant_X% y%CrewImplant_Y%
+}
+
+If (Unequip_1_Y != "ERROR")
+{
+GuiControl, 8: text, Text25, Unequip 1:   y%Unequip_1_Y%
+}
+
+If (Unequip_2_Y != "ERROR")
+{
+GuiControl, 8: text, Text26, Unequip 2:   y%Unequip_2_Y%
 }
 return
 
@@ -3442,9 +3489,21 @@ Loaded := "Implant"
 Gui, 8: destroy
 return
 
+Edit_Text25:
+Hotkey, LButton, On
+Loaded := "Unequip_1"
+Gui, 8: destroy
+return
+
+Edit_Text26:
+Hotkey, LButton, On
+Loaded := "Unequip_2"
+Gui, 8: destroy
+return
+
 
 Setup_Save:
-Goto, Gui_Start
+Reload
 return
 
 
