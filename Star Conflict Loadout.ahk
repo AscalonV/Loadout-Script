@@ -1,4 +1,4 @@
-v1.5.2
+v1.5.3
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance Force
@@ -100,6 +100,7 @@ IniRead, Coordinates_Check_Crew15_3, %A_ScriptDir%\Coordinates.ini, Crew15-3, x
 IniRead, Coordinates_Check_Implant, %A_ScriptDir%\Coordinates.ini, Implant, x
 IniRead, Coordinates_Check_Unequip_1_Y, %A_ScriptDir%\Coordinates.ini, Unequip_1, y
 IniRead, Coordinates_Check_Unequip_2_Y, %A_ScriptDir%\Coordinates.ini, Unequip_2, y
+IniRead, Coordinates_Check_Implant_Color, %A_ScriptDir%\Coordinates.ini, Implant, implant_color
 
 
 Multiple := 0
@@ -190,7 +191,7 @@ GuiControl, 1: choose, Ship4, None
 gosub, Last_Selected
 
 
-If (Coordinates_Check_Unequip_2_Y = "ERROR") or (Coordinates_Check_Unequip_1_Y = "ERROR") or (Coordinates_Check_Empire = "ERROR") or (Coordinates_Check_Federation = "ERROR") or (Coordinates_Check_Jericho = "ERROR") or (Coordinates_Check_Ellydium = "ERROR") or (Coordinates_Check_Unique = "ERROR") or (Coordinates_Check_Slot1 = "ERROR") or (Coordinates_Check_Slot2 = "ERROR") or (Coordinates_Check_Slot3 = "ERROR") or (Coordinates_Check_Slot4 = "ERROR") or (Coordinates_Check_Preset1 = "ERROR") or (Coordinates_Check_Preset2 = "ERROR") or (Coordinates_Check_Preset3 = "ERROR") or (Coordinates_Check_Preset4 = "ERROR") or (Coordinates_Check_PresetL = "ERROR") or (Coordinates_Check_Yes = "ERROR") or (Coordinates_Check_Scroll = "ERROR") or (Coordinates_Check_Back = "ERROR") or (Coordinates_Check_Crew_A = "ERROR") or (Coordinates_Check_Crew_B = "ERROR") or (Coordinates_Check_Crew_C = "ERROR") or (Coordinates_Check_Crew_D = "ERROR") or (Coordinates_Check_Crew1_1 = "ERROR") or (Coordinates_Check_Crew15_3 = "ERROR") or (Coordinates_Check_Implant = "ERROR")
+If (Coordinates_Check_Implant_Color = "ERROR") or (Coordinates_Check_Unequip_2_Y = "ERROR") or (Coordinates_Check_Unequip_1_Y = "ERROR") or (Coordinates_Check_Empire = "ERROR") or (Coordinates_Check_Federation = "ERROR") or (Coordinates_Check_Jericho = "ERROR") or (Coordinates_Check_Ellydium = "ERROR") or (Coordinates_Check_Unique = "ERROR") or (Coordinates_Check_Slot1 = "ERROR") or (Coordinates_Check_Slot2 = "ERROR") or (Coordinates_Check_Slot3 = "ERROR") or (Coordinates_Check_Slot4 = "ERROR") or (Coordinates_Check_Preset1 = "ERROR") or (Coordinates_Check_Preset2 = "ERROR") or (Coordinates_Check_Preset3 = "ERROR") or (Coordinates_Check_Preset4 = "ERROR") or (Coordinates_Check_PresetL = "ERROR") or (Coordinates_Check_Yes = "ERROR") or (Coordinates_Check_Scroll = "ERROR") or (Coordinates_Check_Back = "ERROR") or (Coordinates_Check_Crew_A = "ERROR") or (Coordinates_Check_Crew_B = "ERROR") or (Coordinates_Check_Crew_C = "ERROR") or (Coordinates_Check_Crew_D = "ERROR") or (Coordinates_Check_Crew1_1 = "ERROR") or (Coordinates_Check_Crew15_3 = "ERROR") or (Coordinates_Check_Implant = "ERROR")
 {
 msgbox, Please add the missing coordinates
 Gui, 8: destroy
@@ -1737,6 +1738,7 @@ IniRead,FullShipList,%A_ScriptDir%\ShipList.ini
 StringReplace, FullShipList,FullShipList, `n,, All
 GuiControl, 3:, Edit_Loadout_Ship_selected, |%FullShipList%
 GuiControl, 3: choose, Edit_Loadout_Ship_selected, None
+Gosub, Load_Ship_stats
 Gui, 3: -Disabled
 Gui, 10: destroy
 return
@@ -3448,8 +3450,6 @@ Hotkey, LButton, On
 Loaded := "Unique"
 Gui, 8: destroy
 return
-
-
 
 Edit_Text6:
 Hotkey, LButton, On
