@@ -31,6 +31,7 @@
 -
 ![20241004_18 06 42](https://github.com/user-attachments/assets/ceca12d2-7a03-4367-a43e-ddb376e4d0da)
 -
+
 # How to add a new ship
 ![20241010_13 25 17](https://github.com/user-attachments/assets/a60ecdfd-0a35-4f00-adba-c12aa272ab21)
 -
@@ -46,6 +47,7 @@
 -
 ![20241010_13 45 23](https://github.com/user-attachments/assets/f925593c-fb7a-450a-9c22-4af1408ffaf6)
 -
+
 # How to add a loadout
 ![20241010_13 57 39](https://github.com/user-attachments/assets/8b1da0f1-06a3-4272-b5b7-c236c0cf6fe8)
 -
@@ -57,6 +59,7 @@
 -
 ![20241010_14 03 59](https://github.com/user-attachments/assets/f515e995-26b3-4365-a625-f7972c2d69ee)
 -
+
 # How to add a preset
 ![20241010_14 08 49](https://github.com/user-attachments/assets/71c455c7-2b74-477a-8fcb-6eabfb56732e)
 ![Uploading 20241010_14.09.53.png…]()
