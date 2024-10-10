@@ -1,4 +1,4 @@
-v1.3.0
+v1.4.0
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance Force
@@ -808,7 +808,7 @@ ClickX := ClickX+30
 IniRead,ClickY,%A_ScriptDir%\Coordinates.ini,Unequip_1,y
 Click, %ClickX% %ClickY%
 ClickX := ClickX-30
-Sleep, 200
+Sleep, 300
 ControlSend, , {esc}, ahk_class game_main_window
 Sleep, 200
 ControlSend, , {t}, ahk_class game_main_window
@@ -819,7 +819,7 @@ sleep, 200
 ClickX := ClickX+30
 IniRead,ClickY,%A_ScriptDir%\Coordinates.ini,Unequip_2,y
 Click, %ClickX% %ClickY%
-Sleep, 200
+Sleep, 300
 ControlSend, , {esc}, ahk_class game_main_window
 Sleep, 200
 ControlSend, , {t}, ahk_class game_main_window
@@ -874,7 +874,7 @@ ClickX := ClickX+30
 IniRead,ClickY,%A_ScriptDir%\Coordinates.ini,Unequip_1,y
 Click, %ClickX% %ClickY%
 ClickX := ClickX-30
-Sleep, 200
+Sleep, 300
 ControlSend, , {esc}, ahk_class game_main_window
 Sleep, 200
 ControlSend, , {t}, ahk_class game_main_window
@@ -886,7 +886,7 @@ ClickX := ClickX+30
 IniRead,ClickY,%A_ScriptDir%\Coordinates.ini,Unequip_2,y
 Click, %ClickX% %ClickY%
 ClickX := ClickX-30
-Sleep, 200
+Sleep, 300
 ControlSend, , {esc}, ahk_class game_main_window
 Sleep, 200
 ControlSend, , {t}, ahk_class game_main_window
@@ -929,7 +929,7 @@ sleep, 200
 IniRead,ClickX,%A_ScriptDir%\Coordinates.ini,Yes,x
 IniRead,ClickY,%A_ScriptDir%\Coordinates.ini,Yes,y
 Click, %ClickX% %ClickY%
-sleep, 500
+sleep, 1000
 }
 }
 return
@@ -972,9 +972,17 @@ gosub, Set_Implants
 
 IniRead,ClickX,%A_ScriptDir%\Coordinates.ini,Implant,x
 IniRead,ClickY,%A_ScriptDir%\Coordinates.ini,Implant,y
+IniRead,implant_color,%A_ScriptDir%\Coordinates.ini,Implant,implant_color
 
 Click, %ClickX% %ClickY%
-Sleep, 2000
+
+PixelSearch, Implant_color_check_x, Implant_color_check_y, %ClickX%, %ClickY%, %ClickX%, %ClickY%, %implant_color%, 4, Fast RGB
+while !Implant_color_check_x
+{
+Sleep, 100
+PixelSearch, Implant_color_check_x, Implant_color_check_y, %ClickX%, %ClickY%, %ClickX%, %ClickY%, %implant_color%, 4, Fast RGB
+}
+Sleep, 200
 }
 return
 
@@ -2909,6 +2917,12 @@ else
 	IniWrite, %MouseX%, %A_ScriptDir%\Coordinates.ini, %Loaded%, x
 	IniWrite, %MouseY%, %A_ScriptDir%\Coordinates.ini, %Loaded%, y
 	
+	If Loaded = Implant
+	{
+		PixelGetColor, implant_color, %MouseX%, %MouseY%, RGB
+		IniWrite, %implant_color%, %A_ScriptDir%\Coordinates.ini, %Loaded%, implant_color
+	}
+	
 	If Loaded = Slot1
 	{
 		IniWrite, 1, %A_ScriptDir%\Coordinates.ini, %Loaded%, Slot
@@ -3163,6 +3177,7 @@ IniRead, Crew15_3_X, %A_ScriptDir%\Coordinates.ini, Crew15-3, x
 IniRead, Crew15_3_Y, %A_ScriptDir%\Coordinates.ini, Crew15-3, y
 IniRead, CrewImplant_X, %A_ScriptDir%\Coordinates.ini, Implant, x
 IniRead, CrewImplant_Y, %A_ScriptDir%\Coordinates.ini, Implant, y
+IniRead, implant_color, %A_ScriptDir%\Coordinates.ini, Implant, implant_color
 
 
 Gui, 13: show
@@ -3200,7 +3215,7 @@ Gui, 8: Add, Text, vText20 x330 y280 w200 h30, Crew C:
 Gui, 8: Add, Text, vText21 x330 y310 w200 h30, Crew D:
 Gui, 8: Add, Text, vText22 x330 y340 w200 h30, Crew 1-1:
 Gui, 8: Add, Text, vText23 x330 y370 w200 h30, Crew 15-3:
-Gui, 8: Add, Text, vText24 x330 y400 w200 h30, Implant:
+Gui, 8: Add, Text, vText24 x330 y400 w200 h35, Implant:`nColor:
 
 
 
@@ -3230,14 +3245,14 @@ Gui, 8: Add, Button, gEdit_Text20 x540 y278 w50 h20, Edit
 Gui, 8: Add, Button, gEdit_Text21 x540 y308 w50 h20, Edit
 Gui, 8: Add, Button, gEdit_Text22 x540 y338 w50 h20, Edit
 Gui, 8: Add, Button, gEdit_Text23 x540 y368 w50 h20, Edit
-Gui, 8: Add, Button, gEdit_Text24 x540 y398 w50 h20, Edit
+Gui, 8: Add, Button, gEdit_Text24 x540 y403 w50 h20, Edit
 
-Gui, 8: Add, Button, gSetup_save x215 y430 w80 h30, Continue
-Gui, 8: Add, Button, gSetup_cancel x305 y430 w80 h30, Exit App
+Gui, 8: Add, Button, gSetup_save x215 y445 w80 h30, Continue
+Gui, 8: Add, Button, gSetup_cancel x305 y445 w80 h30, Exit App
 
 
 Gui, 13: hide
-Gui, 8: Show, x100 y100 h480 w600, Setup
+Gui, 8: Show, x100 y100 h490 w600, Setup
 Gui, 1: destroy
 
 If (Empire_X != "ERROR")
@@ -3357,7 +3372,7 @@ GuiControl, 8: text, Text23, Crew 15-3:   x%Crew15_3_X% y%Crew15_3_Y%
 
 If (CrewImplant_X != "ERROR")
 {
-GuiControl, 8: text, Text24, Implant:   x%CrewImplant_X% y%CrewImplant_Y%
+GuiControl, 8: text, Text24, Implant:   x%CrewImplant_X% y%CrewImplant_Y%`nColor:     %implant_color%
 }
 
 If (Unequip_1_Y != "ERROR")
