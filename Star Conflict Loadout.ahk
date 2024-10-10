@@ -1,4 +1,4 @@
-v1.2.0
+v1.3.0
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance Force
@@ -288,8 +288,6 @@ GuiControl, 1: choose, Builds_Ship2_selected, %Preference_Build2%
 GuiControl, 1: choose, Builds_Ship3_selected, %Preference_Build3%
 GuiControl, 1: choose, Builds_Ship4_selected, %Preference_Build4%
 Gui, 1:Submit, nohide
-
-
 return
 
 
@@ -322,6 +320,8 @@ GuiControl, 1: choose, Builds_Ship1_selected, %Preference_Build1%
 GuiControl, 1: choose, Builds_Ship2_selected, %Preference_Build2%
 GuiControl, 1: choose, Builds_Ship3_selected, %Preference_Build3%
 GuiControl, 1: choose, Builds_Ship4_selected, %Preference_Build4%
+IniRead, Unequip_P,%A_ScriptDir%\Preferences.ini,Last|,Unequip
+GuiControl, 1: ,Unequip_Ships_checked, %Unequip_P%
 Gui, 1:Submit, nohide
 return
 
@@ -865,6 +865,34 @@ ControlSend, , {t}, ahk_class game_main_window
 sleep, 200
 IniRead,ClickX,%A_ScriptDir%\Coordinates.ini,%Slot_selected%,x
 IniRead,ClickY,%A_ScriptDir%\Coordinates.ini,%Slot_selected%,y
+
+If Unequip_Ships_checked = 1
+{
+Click, %ClickX% %ClickY% right
+sleep, 200
+ClickX := ClickX+30
+IniRead,ClickY,%A_ScriptDir%\Coordinates.ini,Unequip_1,y
+Click, %ClickX% %ClickY%
+ClickX := ClickX-30
+Sleep, 200
+ControlSend, , {esc}, ahk_class game_main_window
+Sleep, 200
+ControlSend, , {t}, ahk_class game_main_window
+sleep, 200
+
+Click, %ClickX% %ClickY% right
+sleep, 200
+ClickX := ClickX+30
+IniRead,ClickY,%A_ScriptDir%\Coordinates.ini,Unequip_2,y
+Click, %ClickX% %ClickY%
+ClickX := ClickX-30
+Sleep, 200
+ControlSend, , {esc}, ahk_class game_main_window
+Sleep, 200
+ControlSend, , {t}, ahk_class game_main_window
+sleep, 200
+}
+
 Click %ClickX% %ClickY% Down
 Sleep, 200
 MouseMove, 0, -200, 100, R
@@ -989,6 +1017,7 @@ IniWrite,%Builds_Ship1_selected%, %A_ScriptDir%\Preferences.ini,Last|,Build1
 IniWrite,%Builds_Ship2_selected%, %A_ScriptDir%\Preferences.ini,Last|,Build2
 IniWrite,%Builds_Ship3_selected%, %A_ScriptDir%\Preferences.ini,Last|,Build3
 IniWrite,%Builds_Ship4_selected%, %A_ScriptDir%\Preferences.ini,Last|,Build4
+IniWrite,%Unequip_Ships_checked%, %A_ScriptDir%\Preferences.ini,Last|,Unequip
 
 Edit_Preferences_Gui:
 IniRead,Preferences,%A_ScriptDir%\Preferences.ini
@@ -1509,6 +1538,7 @@ IniWrite,%Builds_Ship1_selected%, %A_ScriptDir%\Preferences.ini,Last|,Build1
 IniWrite,%Builds_Ship2_selected%, %A_ScriptDir%\Preferences.ini,Last|,Build2
 IniWrite,%Builds_Ship3_selected%, %A_ScriptDir%\Preferences.ini,Last|,Build3
 IniWrite,%Builds_Ship4_selected%, %A_ScriptDir%\Preferences.ini,Last|,Build4
+IniWrite,%Unequip_Ships_checked%, %A_ScriptDir%\Preferences.ini,Last|,Unequip
 
 Show_Ship_Stats_Gui:
 Gui, 13: show
@@ -3074,6 +3104,7 @@ IniWrite,%Builds_Ship1_selected%, %A_ScriptDir%\Preferences.ini,Last|,Build1
 IniWrite,%Builds_Ship2_selected%, %A_ScriptDir%\Preferences.ini,Last|,Build2
 IniWrite,%Builds_Ship3_selected%, %A_ScriptDir%\Preferences.ini,Last|,Build3
 IniWrite,%Builds_Ship4_selected%, %A_ScriptDir%\Preferences.ini,Last|,Build4
+IniWrite,%Unequip_Ships_checked%, %A_ScriptDir%\Preferences.ini,Last|,Unequip
 
 IniRead, Empire_X, %A_ScriptDir%\Coordinates.ini, Empire, x
 IniRead, Empire_Y, %A_ScriptDir%\Coordinates.ini, Empire, y
@@ -3523,6 +3554,7 @@ IniWrite,%Builds_Ship1_selected%, %A_ScriptDir%\Preferences.ini,Last|,Build1
 IniWrite,%Builds_Ship2_selected%, %A_ScriptDir%\Preferences.ini,Last|,Build2
 IniWrite,%Builds_Ship3_selected%, %A_ScriptDir%\Preferences.ini,Last|,Build3
 IniWrite,%Builds_Ship4_selected%, %A_ScriptDir%\Preferences.ini,Last|,Build4
+IniWrite,%Unequip_Ships_checked%, %A_ScriptDir%\Preferences.ini,Last|,Unequip
 2GuiClose:
 3GuiClose:
 4GuiClose:
