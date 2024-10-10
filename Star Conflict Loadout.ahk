@@ -1,4 +1,4 @@
-v1.5.1
+v1.5.2
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance Force
@@ -11,6 +11,7 @@ SetMouseDelay, 0
 DetectHiddenWindows, On
 SetKeyDelay , 50, 100,    ; 50ms is the default delay between presses, 30ms is the press length
 Hotkey, LButton, Off
+Hotkey, RButton, Off
 Hotkey, WheelUp, Off
 Hotkey, WheelDown, Off
 MouseWheelCounter = 0
@@ -1874,10 +1875,13 @@ Gui, 4: Add, Button, gNew_Ship x205 y270 w190 h25, Add
 Gui, 4: Font, cWhite s9, Arial
 Gui, 4: Add, Button, gExit4 x500 y360 w80 h20, Back
 
+Gui, 4: Add, Text, x10 y360 w300 h30, Rightclick: Transfer scroll value`nMousewheel click: Reset scroll counter
+
 Gui, 13: hide
 Gui, 4: Show, x100 y100 h400 w600, Add New Ship
 Gui, 3: destroy
 
+Hotkey, RButton, On
 Hotkey, WheelUp, On
 Hotkey, WheelDown, On
 return
@@ -1946,6 +1950,7 @@ IniRead,FullShipList,%A_ScriptDir%\ShipList.ini
 GuiControl, 12: text, Ship_confirm_text1, Ship "%Add_New_Ship_Ship%" added
 Gui, 12: Show, x287.5 y273.75 h170 w300, Info
 Ship_Added := 1
+Hotkey, RButton, Off
 Hotkey, WheelUp, Off
 Hotkey, WheelDown, Off
 Gosub, RemoveToolTip
@@ -1970,6 +1975,7 @@ return
 
 
 Exit4:
+Hotkey, RButton, Off
 Hotkey, WheelUp, Off
 Hotkey, WheelDown, Off
 Gosub, RemoveToolTip
@@ -2019,6 +2025,7 @@ Gui, 5: Add, Button, gSubmit_Setting_Changes x205 y270 w190 h25, Save Changes
 Gui, 5: Font, cWhite s9, Arial
 Gui, 5: Add, Button, gExit5 x500 y360 w80 h20, Back
 
+Gui, 5: Add, Text, x10 y360 w300 h30, Rightclick: Transfer scroll value`nMousewheel click: Reset scroll counter
 
 Gui, 13: hide
 Gui, 5: Show, x100 y100 h400 w600, Edit
@@ -2034,6 +2041,7 @@ GuiControl, 5: choose, Edit_Ship_Scroll2, %Ship_Scroll2%
 GuiControl, 5:, Edit_Ship_Scroll_amount, %Ship_Scroll_amount%
 GuiControl, 5:, Edit_Ship_Scroll_amount2, %Ship_Scroll_amount2%
 
+Hotkey, RButton, On
 Hotkey, WheelUp, On
 Hotkey, WheelDown, On
 }
@@ -2094,6 +2102,7 @@ Gui, 12: Add, Button, vShip_confirm_button1 gSettings_saved_confirm x110 y125 w8
 Gui, 12: Add, Text, x0 y0 w300 h170 0x12
 Gui, 12: Show, x287.5 y273.75 h170 w300, Info
 
+Hotkey, RButton, Off
 Hotkey, WheelUp, Off
 Hotkey, WheelDown, Off
 Gosub, RemoveToolTip
@@ -2106,6 +2115,7 @@ goto, Show_Ship_Stats_Gui
 return
 
 Exit5:
+Hotkey, RButton, Off
 Hotkey, WheelUp, Off
 Hotkey, WheelDown, Off
 Gosub, RemoveToolTip
@@ -3583,6 +3593,60 @@ return
 ~WheelDown::
     MouseWheelCounter--
 	Goto, MouseWheelToolTip
+return
+
+~RButton::
+	If MouseWheelCounter >= 1
+	{
+		Gui, 4:Submit, nohide
+		Gui, 5:Submit, nohide
+		If Add_New_Ship_Scroll = Up
+		{
+			GuiControl, 4: , Add_New_Ship_Scroll_amount, %MouseWheelCounter%
+		}
+		
+		If Add_New_Ship_Scroll2 = Up
+		{
+			GuiControl, 4: , Add_New_Ship_Scroll_amount2, %MouseWheelCounter%
+		}
+		
+		If Edit_Ship_Scroll = Up
+		{
+			GuiControl, 5: , Edit_Ship_Scroll_amount, %MouseWheelCounter%
+		}
+		
+		If Edit_Ship_Scroll2 = Up
+		{
+			GuiControl, 5: , Edit_Ship_Scroll_amount2, %MouseWheelCounter%
+		}
+		
+		
+	}
+	
+	If MouseWheelCounter <= -1
+	{
+		Gui, 4:Submit, nohide
+		Gui, 5:Submit, nohide
+		If Add_New_Ship_Scroll = Down
+		{
+			GuiControl, 4: , Add_New_Ship_Scroll_amount, %MouseWheelCounterToolTip%
+		}
+		
+		If Add_New_Ship_Scroll2 = Down
+		{
+			GuiControl, 4: , Add_New_Ship_Scroll_amount2, %MouseWheelCounterToolTip%
+		}
+		
+		If Edit_Ship_Scroll = Down
+		{
+			GuiControl, 5: , Edit_Ship_Scroll_amount, %MouseWheelCounterToolTip%
+		}
+		
+		If Edit_Ship_Scroll2 = Down
+		{
+			GuiControl, 5: , Edit_Ship_Scroll_amount2, %MouseWheelCounterToolTip%
+		}
+	}
 return
 
 MouseWheelToolTip:
