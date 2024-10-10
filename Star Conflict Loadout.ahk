@@ -1,4 +1,4 @@
-v1.4.0
+v1.5.0
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance Force
@@ -10,6 +10,9 @@ SetMouseDelay, 0
 DetectHiddenWindows, On
 SetKeyDelay , 50, 100,    ; 50ms is the default delay between presses, 30ms is the press length
 Hotkey, LButton, Off
+Hotkey, WheelUp, Off
+Hotkey, WheelDown, Off
+MouseWheelCounter = 0
 
 
 
@@ -1873,6 +1876,9 @@ Gui, 4: Add, Button, gExit4 x500 y360 w80 h20, Back
 Gui, 13: hide
 Gui, 4: Show, x100 y100 h400 w600, Add New Ship
 Gui, 3: destroy
+
+Hotkey, WheelUp, On
+Hotkey, WheelDown, On
 return
 
 
@@ -1939,6 +1945,8 @@ IniRead,FullShipList,%A_ScriptDir%\ShipList.ini
 GuiControl, 12: text, Ship_confirm_text1, Ship "%Add_New_Ship_Ship%" added
 Gui, 12: Show, x287.5 y273.75 h170 w300, Info
 Ship_Added := 1
+Hotkey, WheelUp, Off
+Hotkey, WheelDown, Off
 }
 return
 
@@ -1960,6 +1968,8 @@ return
 
 
 Exit4:
+Hotkey, WheelUp, Off
+Hotkey, WheelDown, Off
 goto, Show_Ship_Stats_Gui
 return
 
@@ -2021,6 +2031,8 @@ GuiControl, 5: choose, Edit_Ship_Scroll2, %Ship_Scroll2%
 GuiControl, 5:, Edit_Ship_Scroll_amount, %Ship_Scroll_amount%
 GuiControl, 5:, Edit_Ship_Scroll_amount2, %Ship_Scroll_amount2%
 
+Hotkey, WheelUp, On
+Hotkey, WheelDown, On
 }
 else
 {
@@ -2078,6 +2090,9 @@ Gui, 12: Add, Text, vShip_confirm_text1 x0 y45 w300 h50 center, Settings Saved
 Gui, 12: Add, Button, vShip_confirm_button1 gSettings_saved_confirm x110 y125 w80 h30 +default, Ok
 Gui, 12: Add, Text, x0 y0 w300 h170 0x12
 Gui, 12: Show, x287.5 y273.75 h170 w300, Info
+
+Hotkey, WheelUp, Off
+Hotkey, WheelDown, Off
 return
 
 Settings_saved_confirm:
@@ -2087,6 +2102,8 @@ goto, Show_Ship_Stats_Gui
 return
 
 Exit5:
+Hotkey, WheelUp, Off
+Hotkey, WheelDown, Off
 goto, Show_Ship_Stats_Gui
 return
 
@@ -3550,6 +3567,20 @@ return
 
 Setup_Save:
 Reload
+return
+
+
+~WheelUp::
+~WheelDown::
+    MouseWheelCounter++
+    Tooltip, %MouseWheelCounter%
+    SetTimer, RemoveToolTip, -5000
+	
+return
+
+RemoveToolTip:
+ToolTip
+MouseWheelCounter = 0
 return
 
 
