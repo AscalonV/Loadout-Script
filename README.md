@@ -1,6 +1,16 @@
-# Initial Setup
-## Important changes: The "Unequip 1" and Unequip 2" coordinates have been removed and replaced by a screenshot.
+## Important changes: 
+- The "Unequip 1" and Unequip 2" coordinates have been removed and replaced by a screenshot. If the "unequip" function isn't working, then please take a screenshot of the "Remove all modules"
+button by yourself and place it in the Settings folder with the name "Remove_all_module.png".
 
+![Remove_all_module](https://github.com/user-attachments/assets/9b0ff1bc-5f9b-4397-a08d-7de67c913b44)
+
+![image](https://github.com/user-attachments/assets/cfc7e256-e661-45b7-8a1c-055492a7992f)
+
+- The folder and file structure has changed. It is now:
+
+![image](https://github.com/user-attachments/assets/e122b2a2-1c73-44e8-b736-e55288ef133a)
+
+# Initial Setup
 
 ![20241004_17 27 19](https://github.com/user-attachments/assets/341ca281-4c94-4388-b415-8e456588dac7)
 -
