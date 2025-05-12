@@ -1,4 +1,7 @@
 # Initial Setup
+## Important changes: The "Unequip 1" and Unequip 2" coordinates have been removed and replaced by a screenshot.
+
+
 ![20241004_17 27 19](https://github.com/user-attachments/assets/341ca281-4c94-4388-b415-8e456588dac7)
 -
 ![20241004_17 28 40](https://github.com/user-attachments/assets/99fb21da-d061-4857-a235-228f7699d9ca)
@@ -15,8 +18,6 @@
 -
 ![20241004_17 45 11](https://github.com/user-attachments/assets/9e94f867-5bbc-4674-8c0e-7764355a0964)
 -
-![20241004_17 52 39](https://github.com/user-attachments/assets/5335a75e-2914-45b8-8427-f48c54776a89)
--
 ![20241004_17 54 17](https://github.com/user-attachments/assets/05c3fe55-8da2-4cd7-915a-c479d0396d97)
 -
 ![20241004_17 56 19](https://github.com/user-attachments/assets/9c08ed7a-cfee-4a7f-a88e-063309081d99)
@@ -28,6 +29,8 @@
 ![20241004_18 02 21](https://github.com/user-attachments/assets/02dedc55-4e63-4ecd-b57e-e1a989798438)
 -
 ![20241004_18 04 14](https://github.com/user-attachments/assets/177f8b32-65f4-439d-85d7-8aabec4531a2)
+-
+![20250512_18 03 40](https://github.com/user-attachments/assets/6b51ba55-ec73-478b-822b-4399b155e51d)
 -
 ![20241004_18 06 42](https://github.com/user-attachments/assets/ceca12d2-7a03-4367-a43e-ddb376e4d0da)
 -
@@ -62,6 +65,8 @@
 
 # How to add a preset
 ![20241010_14 08 49](https://github.com/user-attachments/assets/71c455c7-2b74-477a-8fcb-6eabfb56732e)
-![Uploading 20241010_14.09.53.png…]()
+![20241010_14 09 53](https://github.com/user-attachments/assets/10eefcc3-4d1a-43de-94a6-6ceeb7fa2112)
 ![20241010_14 11 05](https://github.com/user-attachments/assets/4924a3ea-04b6-4c1f-8295-21110733b782)
 ![20241010_14 13 54](https://github.com/user-attachments/assets/e0330ae9-dba9-4712-8590-6d5a40e63ed4)
+
+# How to add an Ellydium loadout
