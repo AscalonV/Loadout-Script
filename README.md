@@ -63,15 +63,6 @@
 ![20241010_14 03 59](https://github.com/user-attachments/assets/f515e995-26b3-4365-a625-f7972c2d69ee)
 -
 
-# How to add a preset
-![20241010_14 08 49](https://github.com/user-attachments/assets/71c455c7-2b74-477a-8fcb-6eabfb56732e)
--
-![20241010_14 09 53](https://github.com/user-attachments/assets/10eefcc3-4d1a-43de-94a6-6ceeb7fa2112)
--
-![20241010_14 11 05](https://github.com/user-attachments/assets/4924a3ea-04b6-4c1f-8295-21110733b782)
--
-![20241010_14 13 54](https://github.com/user-attachments/assets/e0330ae9-dba9-4712-8590-6d5a40e63ed4)
--
 
 # How to add an Ellydium loadout
 ![20250512_18 12 39](https://github.com/user-attachments/assets/fd7d708f-9fdd-4514-b3ae-e70290a2d3fc)
@@ -90,4 +81,3 @@
 -
 ![20250512_18 25 52](https://github.com/user-attachments/assets/04fa27ec-ca4c-4e9d-b7c5-91b472cee852)
 -
-
