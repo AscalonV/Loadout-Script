@@ -8,7 +8,7 @@ button by yourself and place it in the Settings folder with the name "Remove_all
 
 - The folder and file structure has changed. It is now:
 
-![image](https://github.com/user-attachments/assets/e122b2a2-1c73-44e8-b736-e55288ef133a)
+![image](https://github.com/user-attachments/assets/6a77b517-ddae-4f96-92bb-207b55600594)
 
 # Initial Setup
 
