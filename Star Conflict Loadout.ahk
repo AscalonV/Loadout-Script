@@ -1,6 +1,6 @@
 ﻿;-------------------------
 ;-------------------------
-;---------v2.0.0----------
+;---------v2.0.1----------
 ;-----Ellydium update-----
 ;-------------------------
 ;-------------------------
@@ -177,6 +177,7 @@ Checked_N++
 IniRead, ShipList_Check, %A_ScriptDir%\Settings\ShipList.ini, None|, Faction
 If (ShipList_Check = "Error")
 {
+FileCreateDir, Settings
 FileDelete, %A_ScriptDir%\Settings\ShipList.ini
 IniWrite, None, %A_ScriptDir%\Settings\ShipList.ini, None|, Faction
 IniWrite, None, %A_ScriptDir%\Settings\ShipList.ini, None|, x
@@ -186,10 +187,9 @@ IniWrite, None, %A_ScriptDir%\Settings\ShipList.ini, None|, y
 IniRead, Builds_Check, %A_ScriptDir%\Builds\None.ini, None|, None
 If (Builds_Check = "Error")
 {
-FileCreateDir, Builds
+FileCreateDir, Builds\Ellydium
 IniWrite, None, %A_ScriptDir%\Builds\None.ini, None|, None
 }
-
 
 
 Gui_Start:
