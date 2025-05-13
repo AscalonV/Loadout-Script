@@ -1,5 +1,9 @@
-[Go to Real Cool Heading section](#Initial-Setup)
-
+# Bookmarks
+1. [Initial setup](#Initial-Setup)<br />
+2. [Add a new ship](#How-to-add-a-new-ship)<br />
+3. [Add a new loadout](#How-to-add-a-loadout)<br />
+4. [Initial Ellydium setup](#Initial-Ellydium-setup)<br />
+5. [Ellydium ship loadout](#How-to-add-an-Ellydium-loadout)<br />
 
 
 ## Important changes: 
@@ -15,7 +19,8 @@ button by yourself and place it in the Settings folder with the name "Remove_all
 ![image](https://github.com/user-attachments/assets/6a77b517-ddae-4f96-92bb-207b55600594)
 
 # Initial Setup
-(Initial-Setup)
+
+Download the whole repository with all folders.
 
 ![20241004_17 27 19](https://github.com/user-attachments/assets/341ca281-4c94-4388-b415-8e456588dac7)
 -
@@ -77,6 +82,12 @@ button by yourself and place it in the Settings folder with the name "Remove_all
 -
 ![20241010_14 03 59](https://github.com/user-attachments/assets/f515e995-26b3-4365-a625-f7972c2d69ee)
 -
+
+
+# Initial Ellydium setup
+1. Download the .ini's of the Ellydium ships found in the "Builds/Ellydium" folder and place them in your Build/Ellydium folder if you haven't already. These are needed because they contain the in-game node data.
+![image](https://github.com/user-attachments/assets/d9c63074-b924-40f7-9692-bb5ec3e7d613)
+
 
 
 # How to add an Ellydium loadout
