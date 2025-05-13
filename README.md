@@ -1,3 +1,7 @@
+[Go to Real Cool Heading section](#Initial-Setup)
+
+
+
 ## Important changes: 
 - The "Unequip 1" and Unequip 2" coordinates have been removed and replaced by a screenshot. If the "unequip" function isn't working, then please take a screenshot of the "Remove all modules"
 button by yourself and place it in the Settings folder with the name "Remove_all_module.png".
@@ -11,6 +15,7 @@ button by yourself and place it in the Settings folder with the name "Remove_all
 ![image](https://github.com/user-attachments/assets/6a77b517-ddae-4f96-92bb-207b55600594)
 
 # Initial Setup
+(Initial-Setup)
 
 ![20241004_17 27 19](https://github.com/user-attachments/assets/341ca281-4c94-4388-b415-8e456588dac7)
 -
