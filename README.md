@@ -92,5 +92,11 @@ button by yourself and place it in the Settings folder with the name "Remove_all
   
   ![20250514_16 38 49](https://github.com/user-attachments/assets/ce84c24e-9d51-46ce-90ed-43dee92b5c9e)
   </details>
+  15. Set your "Crew" keybind to "c" and your "Ships" keybind to "t"<br />
+  <details>
+  <summary>Screenshot</summary>
+	  
+  ![20250514_16 51 06](https://github.com/user-attachments/assets/b2539d7f-dac2-409a-88c0-4935a767f64e)
+  </details>
 </details>
 
