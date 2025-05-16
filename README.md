@@ -100,3 +100,36 @@ button by yourself and place it in the Settings folder with the name "Remove_all
   </details>
 </details>
 
+<details>
+<summary>Add a new ship</summary><br />
+<br />
+  1. Click on "Loadout" at the bottom right of the script.<br />
+  <details>
+  <summary>Screenshot</summary>
+
+  ![20250516_12 01 02](https://github.com/user-attachments/assets/84beb1ed-0c48-4f85-8cff-27af81841f58)
+  </details>
+  2. Click the "+" sign next to the Field that shows the selected ship. It should say "None" at the beginning.<br />
+  <details>
+  <summary>Screenshot</summary>
+
+  ![20250516_12 02 23](https://github.com/user-attachments/assets/bc8ad7bd-ac1a-4625-ad1b-c28893b8468f)
+  </details>
+  3. Enter the name of the ship, select the faction and open the ship tree.<br /><br />
+  4. Now you need to set "Scroll 1" and if needed "Scroll 2". For the 3 Main trees (Empire, Federation and Jericho) you should use a number that is high enough to get from the top of the tree all the way to the bottom. This is used to zero in the tree.<br /><br />
+  5. If your ship isn't visible when scrolled all the way to the bottom, then you need to set "Scroll 2" to "Up" and slowly scroll up until you reach your ship. The script counts the amount for you.<br />
+  <details>
+  <summary>Screenshot</summary>
+
+  ![20250516_12 08 53](https://github.com/user-attachments/assets/50d263c0-c64c-47c7-8026-9635b005d203)
+  </details>
+  6. Select "Click" and click on the ship that you want to setup.<br />
+  <details>
+  <summary>Screenshot</summary>
+
+  ![20250516_12 10 16](https://github.com/user-attachments/assets/91e9a100-a789-4255-a9fd-7118fa70a9ab)
+  </details>
+  7. Click on the "Add" button.<br /><br />
+  8. Done. The ship is now added.<br />
+
+</details>
