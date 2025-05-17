@@ -917,30 +917,34 @@ return
 Equip_Ship:
 If Ship_loaded != None
 {
-ControlSend, , {t}, ahk_class game_main_window
-sleep, 200
-IniRead,ClickX,%A_ScriptDir%\Settings\Coordinates.ini,%Slot_selected%,x
-IniRead,ClickY,%A_ScriptDir%\Settings\Coordinates.ini,%Slot_selected%,y
-Click, %ClickX% %ClickY%
-sleep, 200
-
-If Unequip_Ships_checked = 1
-{
-Click, %ClickX% %ClickY% right
-sleep, 200
-
-x_min := ClickX-50
-x_max := ClickX+500
-y_min := ClickY-300
-y_max := ClickY+300
-
-ImageSearch, ClickX, ClickY, x_min, y_min, x_max, y_max, *50 %A_ScriptDir%\Settings\Remove_all_modules.png
-If (ClickX != "")
-	{
-	ClickX := ClickX+10
-	ClickY := ClickY+10
+	ControlSend, , {t}, ahk_class game_main_window
+	sleep, 200
+	IniRead,ClickX,%A_ScriptDir%\Settings\Coordinates.ini,%Slot_selected%,x
+	IniRead,ClickY,%A_ScriptDir%\Settings\Coordinates.ini,%Slot_selected%,y
 	Click, %ClickX% %ClickY%
-	sleep, 1000
+	sleep, 200
+
+	If Unequip_Ships_checked = 1
+	{
+	Click, %ClickX% %ClickY% right
+	sleep, 200
+
+	x_min := ClickX-50
+	x_max := ClickX+500
+	y_min := ClickY-300
+	y_max := ClickY+300
+
+	ImageSearch, ClickX, ClickY, x_min, y_min, x_max, y_max, *50 %A_ScriptDir%\Settings\Remove_all_modules.png
+	If (ErrorLevel = 0)
+	{
+		ClickX := ClickX+10
+		ClickY := ClickY+10
+		Click, %ClickX% %ClickY%
+		sleep, 1000
+	}
+	else if (ErrorLevel = 2)
+	{
+		msgbox, Could not find the unequip screenshot. Please place save the screenshot in "Settings" folder named "Remove_all_modules.png".
 	}
 }
 
@@ -1598,12 +1602,12 @@ StringReplace, Mode,Mode, `n,, All
 Gui, 2: +Disabled
 Gui, 14: +AlwaysOnTop -caption +border
 Gui, 14: Color, 000000
-Gui, 14: Font, cWhite s14, Orbitron
+Gui, 14: Font, cWhite s14, Arial
 Gui, 14: Add, Text, x0 y10 w300 h30 center, ---------- INFO ----------
 Gui, 14: Add, Text, vRename_Preference_Text1 x10 y40 w280 h25 center, Rename: "%Mode%"
-Gui, 14: Font, cBlack s14, Orbitron
+Gui, 14: Font, cBlack s14, Arial
 Gui, 14: Add, edit, vRename_Preference_New_Name x40 y75 w220 h30 center,%Mode%
-Gui, 14: Font, cWhite s14, Orbitron
+Gui, 14: Font, cWhite s14, Arial
 Gui, 14: Add, Button, gRename_Preference_Save x65 y125 w80 h30 +default, Save
 Gui, 14: Add, Button, gRename_Preference_Cancel x155 y125 w80 h30, Cancel
 Gui, 14: Add, Text, x0 y0 w300 h170 0x12
@@ -1632,7 +1636,7 @@ SetTimer, Timer_Rename_Preference_Text, -3000
 }else If (!Rename_Preference_New_Name_Check)
 {
 
-filePath = Preferences.ini
+filePath = Settings\Preferences.ini
 newData := replaceLabel(Mode "|", Rename_Preference_New_Name "|", filePath)
 
 GuiControl, 14: Text, Rename_Preference_Text1, Preset name changed
@@ -1929,7 +1933,7 @@ SetTimer, Timer_Rename_Ship_Text, -3000
 }else If (!Rename_Ship_New_Name_Check)
 {
 
-filePath = ShipList.ini
+filePath = Settings\ShipList.ini
 newData := replaceLabel(Edit_Loadout_Ship_selected "|", Rename_Ship_New_Name "|", filePath)
 FileMove, %A_ScriptDir%\Builds\%Edit_Loadout_Ship_selected%.ini, %A_ScriptDir%\Builds\%Rename_Ship_New_Name%.ini
 
