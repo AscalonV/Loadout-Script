@@ -1,11 +1,3 @@
-# Bookmarks
-1. [Initial setup](#Initial-Setup)<br />
-2. [Add a new ship](#How-to-add-a-new-ship)<br />
-3. [Add a new loadout](#How-to-add-a-loadout)<br />
-4. [Initial Ellydium setup](#Initial-Ellydium-setup)<br />
-5. [Ellydium ship loadout](#How-to-add-an-Ellydium-loadout)<br />
-
-
 ## Important changes: 
 - For the new Ellydium tree selector to work you need to name the Ellydium ships exactly like ingame:
   - Tai'Kin
@@ -28,8 +20,9 @@ button by yourself and place it in the Settings folder with the name "Remove_all
 ![image](https://github.com/user-attachments/assets/6a77b517-ddae-4f96-92bb-207b55600594)
 
 
+# Initial Setup
 <details>
-<summary>Initial Setup</summary>
+<summary>Initial Setup</summary><br />
   Prerequisites: AHK v1.1<br />
   <br />
   1. Download the repository.<br /><br />
@@ -104,6 +97,7 @@ button by yourself and place it in the Settings folder with the name "Remove_all
   </details>
 </details>
 
+# Add a new ship
 <details>
 <summary>Add a new ship</summary><br />
 <br />
@@ -138,6 +132,7 @@ button by yourself and place it in the Settings folder with the name "Remove_all
 
 </details>
 
+# Add a new Loadout
 <details>
 <summary>Add a new Loadout</summary><br />
 <br />
@@ -163,6 +158,7 @@ button by yourself and place it in the Settings folder with the name "Remove_all
   
 </details>
 
+# How to add an Ellydium tree loadout
 <details>
 <summary>How to add an Ellydium tree loadout</summary><br />
 <br />
