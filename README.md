@@ -7,11 +7,15 @@
 
 
 ## Important changes: 
+- For the new Ellydium tree selector to work you need to name the Ellydium ships exactly like ingame:
+  - Tai'Kin
+  - Yith'Mor
+  - Thar'Ga
+  - Waz'Got
+  - Drag'Thir
+  - Ze'Ta
 - The "Unequip 1" and Unequip 2" coordinates have been removed and replaced by a screenshot. If the "unequip" function isn't working, then please take a screenshot of the "Remove all modules"
 button by yourself and place it in the Settings folder with the name "Remove_all_module.png"
-  
-
-
 <details>
 <summary>Screenshot</summary>
   
@@ -133,3 +137,87 @@ button by yourself and place it in the Settings folder with the name "Remove_all
   8. Done. The ship is now added.<br />
 
 </details>
+
+<details>
+<summary>Add a new Loadout</summary><br />
+<br />
+  1. Select the ship you want to add a Loadout and click on "Edit" in the "Loadouts" section.<br />
+  <details>
+  <summary>Screenshot</summary>
+  	  
+  <img width="752" height="533" alt="20250731_17 50 57" src="https://github.com/user-attachments/assets/4e68b0f2-0025-4325-a647-f265b33e4565" />
+  </details>
+  2. Click the "+" sign next to the Field that shows the selected Loadout. It should say "None" at the beginning.<br />
+  <details>
+  <summary>Screenshot</summary>
+  <img width="752" height="533" alt="image" src="https://github.com/user-attachments/assets/25a52f6f-222e-4703-8c5b-0f686d2f1d30" />
+  </details>
+  3. Enter the name of the Loadout, select the preset the script should select in-game (from right to left 1 to 4) and add the implants for your loadout (1 is the top row, 2 is the middle row and 3 is the bottom row.<br />
+  <details>
+  <summary>Screenshot</summary>
+
+  <img width="752" height="533" alt="image" src="https://github.com/user-attachments/assets/45003bec-575f-4ae4-b05b-f48323c698cf" />
+  </details>
+  7. Click on the "Add" button.<br /><br />
+  8. Done. The new Loadout is now added.<br />
+  
+</details>
+
+<details>
+<summary>How to add an Ellydium tree loadout</summary><br />
+<br />
+  1. Download the .ini's of the Ellydium ships found in the "Builds/Ellydium" folder and place them in your Build/Ellydium folder if you haven't already. These are needed because they contain the in-game node data.<br />
+  <details>
+  <summary>Screenshot</summary>
+  	  
+  <img width="1574" height="468" alt="image" src="https://github.com/user-attachments/assets/bf6759dd-d43f-4631-ade7-0b543403388b" />
+  </details>
+  2. Go to "Loadouts" section where you can select a Ship<br /><br />
+  3. Select an Ellydium ship and click on the "Edit" button in the "Loadouts" section<br />
+  <details>
+  <summary>Screenshot</summary>
+  	  
+  <img width="752" height="533" alt="image" src="https://github.com/user-attachments/assets/971b048b-73d3-4e16-a6cb-8f4e2336c34b" />
+  </details>
+  4. Click on "Setup". This needs to be done for every Ellydium ship seperately<br />
+  <details>
+  <summary>Screenshot</summary>
+  	  
+  <img width="752" height="533" alt="image" src="https://github.com/user-attachments/assets/d103cc7b-bf74-475b-87bf-f921fa48d3b2" />
+  </details>
+  5. Go through each node class and click the corresponding node in the Ellydium tree<br />
+  <details>
+  <summary>Screenshot</summary>
+  	  
+  <img width="777" height="727" alt="image" src="https://github.com/user-attachments/assets/be901fc2-b4b0-4d7e-9b5c-0895c4e96189" />
+  </details>
+  6. Set the coordinates for each node. IMPORTANT! Set the coordinates on a point of the node, that is bright green when activated and dark when deactivated. Otherwise the detection might fail.<br />
+  <details>
+  <summary>Screenshot</summary>
+  	  
+  <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/51c945fc-ca4d-48a9-9e99-194f272bfa74" />
+  </details>
+  7. Now go to "Setup Node Colors"<br />
+  <details>
+  <summary>Screenshot</summary>
+  	  
+  <img width="777" height="727" alt="image" src="https://github.com/user-attachments/assets/154b05f3-eb86-4faf-8cbf-9540af9927f8" />
+  </details>
+  8. Now you have to select a node that is on and off and a spec mod that is on and off to save the color-code of the state. It is best to choose a node thatis completely filled like a shield node.<br />
+  <details>
+  <summary>Screenshot</summary>
+  	  
+  <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/8c7ea06c-8d29-4121-b349-b179659c55fa" />
+  </details>
+  9. Now use the "Check Nodes" function to see if there are nodes that aren't detected correctly and redo the coordiantes for them.<br />
+  <details>
+  <summary>Screenshot</summary>
+  	  
+  <img width="777" height="727" alt="image" src="https://github.com/user-attachments/assets/19f7739b-55ba-4482-9851-c6413fa565c9" />
+  </details>
+  10. If all nodes work, then you have finished the setup for this ship. It is possible, that the nodes still fail to activate, when the script is used, even if the "Check Nodes" function detected all. In this case, just set the coordinates for the failed node again.<br />
+  <details>
+  <summary>Screenshot</summary>
+  	  
+  <img width="777" height="727" alt="image" src="https://github.com/user-attachments/assets/9b10b894-fa9b-4d05-b818-c3dbae48d421" />
+  </details>
